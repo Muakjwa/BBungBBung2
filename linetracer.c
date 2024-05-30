@@ -124,7 +124,7 @@ void tracing() {
         usleep(20000);  // 0.02초
 
     } else if (Tracking_Left2Value == LOW && Tracking_Right1Value == LOW) {
-        car_run(80,80);
+        car_run(80,80); 
     }
 }
 
