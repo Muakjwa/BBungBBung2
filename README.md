@@ -12,7 +12,7 @@ make
 
 ## How to Use
 ```
-./linetracer
+LD_PRELOAD=./noimshow.so ./linetracer
 ```
 ## How to Stop
 ```
