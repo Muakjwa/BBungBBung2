@@ -14,6 +14,10 @@ make
 ```
 ./linetracer
 ```
+## How to Stop
+```
+./stop
+```
 
 ## How to Work?
 ```
