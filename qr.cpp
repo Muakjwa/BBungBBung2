@@ -8,12 +8,13 @@
 using namespace cv;
 using namespace std;
 
-// To connect with linetracer.c
+
+//여기서 linetaracer.c 불러오자
 extern "C" {
     char* qr_detect();
 }
 
-// To check QR size (preventing error)
+//이거 없으면 우리 error난다. 조심. 
 bool isValidQRCode(vector<Point> points) {
     if (points.size() != 4) {
         return false;
@@ -29,7 +30,8 @@ bool isValidQRCode(vector<Point> points) {
 
 char* qr_detect()
 {
-    static char info[128]; // Buffer to hold the QR code data
+    //qr 담을 buffer.
+    static char info[128];
     QRCodeDetector detector;
     Mat frame, gray;
     VideoCapture cap(0);
@@ -97,12 +99,12 @@ char* qr_detect()
 using namespace cv;
 using namespace std;
 
-// To connect with linetracer.c
+//여기서 불러오자.
 extern "C" {
     char* qr_detect();
 }
 
-// To check QR size (preventing error)
+// QR size 체크해놓자.
 bool isValidQRCode(const vector<Point>& points) {
     if (points.size() != 4) {
         return false;
@@ -118,7 +120,8 @@ bool isValidQRCode(const vector<Point>& points) {
 
 char* qr_detect()
 {
-    static char info[128]; // Buffer to hold the QR code data
+    //qr 담을 버퍼..
+    static char info[128];
     QRCodeDetector detector;
     Mat frame, gray;
     VideoCapture cap(0);
@@ -128,7 +131,7 @@ char* qr_detect()
         return NULL;
     }
 
-    // Set frame resolution to a smaller size
+    // 이거 없으면 QR 인식 잘 안됨.
     cap.set(CAP_PROP_FRAME_WIDTH, 640);
     cap.set(CAP_PROP_FRAME_HEIGHT, 480);
 
@@ -174,7 +177,7 @@ char* qr_detect()
             }
         }
 
-        // Release memory used by Mat objects to avoid memory leaks
+        //이거 해야 메모리 초과 X
         frame.release();
         gray.release();
     }
