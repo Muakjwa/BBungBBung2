@@ -93,7 +93,7 @@ char qr_data[128];
 pthread_mutex_t qr_mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t qr_cond = PTHREAD_COND_INITIALIZER;
 DGIST dgist;
-pthread_mutex_t dgist_mutex = PTHREAD_MUTEX_INITIALIZER; // 추가된 뮤텍스
+pthread_mutex_t dgist_mutex = PTHREAD_MUTEX_INITIALIZER; 
 pthread_cond_t dgist_cond = PTHREAD_COND_INITIALIZER;
 
 void printDGIST(DGIST* dgist) {
@@ -414,7 +414,7 @@ void *server_communication(void *arg) {
             }
             printf("Action sent to server\n");
 
-            pthread_mutex_lock(&dgist_mutex); // mutex를 사용하여 공유 데이터 보호
+            pthread_mutex_lock(&dgist_mutex); 
             pthread_cond_wait(&dgist_cond, &dgist_mutex);
 
             if(first_check==0 && (a == 0 && b==0)){
